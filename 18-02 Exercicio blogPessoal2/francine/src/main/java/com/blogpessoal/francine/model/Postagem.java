@@ -6,11 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity //Pra classe ser reconhecida no banco de dados como entidade, preciso avisar:
 @Table(name="Postagem") //Significa que a entidade no DB será uma tabela com nome Postagem.
@@ -30,8 +33,12 @@ public class Postagem {
 	@Size (min=10, max=550)
 	private String texto;
 	
-	@Temporal(TemporalType.TIMESTAMP)//Especificação de que estamos trabalhando com tempo
-	private Date date = new java.sql.Date(System.currentTimeMillis());
+	//@Temporal(TemporalType.TIMESTAMP)//Especificação de que estamos trabalhando com tempo
+	//private Date date = new java.sql.Date(System.currentTimeMillis());
+	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Tema tema;
 
 	public long getId() {
 		return id;
@@ -65,13 +72,7 @@ public class Postagem {
 		this.texto = texto;
 	}
 
-	public Date getDate() {
-		return date;
-	}
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
 	
 	
 	
