@@ -10,6 +10,6 @@ import com.gamer.GamerShopExDoisCompleto.Model.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
-	public List<Produto>findAllByNomeUsuarioContainingIgnoreCase(String nomeUsuario);
+	public List<Usuario>findAllByNomeUsuarioContainingIgnoreCase(String nomeUsuario);
 
 }

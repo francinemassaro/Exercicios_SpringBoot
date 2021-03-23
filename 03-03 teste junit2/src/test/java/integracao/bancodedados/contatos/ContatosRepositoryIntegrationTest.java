@@ -1,10 +1,7 @@
 package integracao.bancodedados.contatos;
 
-import java.util.List;
-
 import javax.validation.ConstraintViolationException;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
